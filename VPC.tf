@@ -16,7 +16,7 @@ resource "aws_nat_gateway" "nat1" {
   subnet_id     = aws_subnet.public_subnet1.id
 
   tags = {
-    Name = "gw NAT"
+    Name = "gw-NAT"
   }
 
   # To ensure proper ordering, it is recommended to add an explicit dependency
@@ -31,7 +31,7 @@ resource "aws_subnet" "public_subnet1" {
     cidr_block = "172.120.1.0/24"
     map_public_ip_on_launch = true
     tags= {
-        Name = "subnet-public-vpc"
+        Name = "vpc-subnet-public"
         env = "Dev"
     } 
 }
@@ -42,7 +42,7 @@ resource "aws_subnet" "public_subnet2" {
     cidr_block = "172.120.2.0/24"
     map_public_ip_on_launch = true
     tags= {
-        Name = "subnet-public-vpc"
+        Name = "vpc-subnet-public"
         env = "Dev"
     } 
 }
@@ -53,7 +53,7 @@ resource "aws_subnet" "private_subnet1" {
     vpc_id = aws_vpc.vpc1.id
     cidr_block = "172.120.3.0/24"
     tags= {
-        Name = "subnet-private-vpc"
+        Name = "vpc-subnet-private"
         env = "Dev"
     } 
     
@@ -63,7 +63,7 @@ resource "aws_subnet" "private_subnet2" {
     vpc_id = aws_vpc.vpc1.id
     cidr_block = "172.120.4.0/24"
     tags= {
-        Name = "subnet-private-vpc"
+        Name = "vpc-subnet-private"
         env = "Dev"
     } 
     
